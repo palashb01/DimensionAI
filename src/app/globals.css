@@ -1,3 +1,19 @@
+@import 'font-awesome/css/font-awesome.min.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ql-formats {
+  display: flex;
+  gap: 12px;
+}
+
+.ql-formats svg {
+  cursor: pointer;
+}
+
+.ql-editor p {
+  width: 100%;
+  font-size: 14px;
+}

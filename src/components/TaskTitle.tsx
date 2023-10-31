@@ -1,4 +1,4 @@
-const DialogTitle = () => {
+const TaskTitle = () => {
   return (
     <div className='flex h-fit w-full items-center'>
       <span className='flex items-center gap-2 rounded-sm bg-lightgray px-3 py-2'>
@@ -9,14 +9,14 @@ const DialogTitle = () => {
           viewBox='0 0 16 16'
           fill='none'
         >
-          <g clip-path='url(#clip0_1_29)'>
+          <g clipPath='url(#clip0_1_29)'>
             <path
               d='M8.66665 2V6.66667H12.6666L7.33331 14V9.33333H3.33331L8.66665 2Z'
               fill='#3FBC77'
               stroke='#3FBC77'
-              stroke-width='1.25'
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeWidth='1.25'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </g>
           <defs>
@@ -48,4 +48,4 @@ const DialogTitle = () => {
   );
 };
 
-export default DialogTitle;
+export default TaskTitle;

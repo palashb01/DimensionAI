@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import DialogBox from '../components/dialogBox';
+import TaskBox from '../components/taskBox';
 
 export default function Home() {
   return (
     <div className='flex h-screen w-full flex-col items-center justify-center'>
-      <DialogBox />
+      <TaskBox />
     </div>
   );
 }
