@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-interface DropdownItem {
-  id: string;
-  name: string;
-  iconClass: string;
-}
+import DropdownItem from '@/types/DropdownItem';
 
 interface SingleSelectDropdownProps {
   items: DropdownItem[];
@@ -36,9 +31,8 @@ const SingleSelectDropdown: React.FC<SingleSelectDropdownProps> = ({
   };
 
   const selectItem = (item: DropdownItem) => {
-    // Remove the item from selectedItems for the specific dropdown (id)
     const updatedSelectedItems = selectedItems.filter(
-      (selectedItem) => selectedItem.id !== item.id
+      (selectedItem) => selectedItem.dropdownName !== item.dropdownName
     );
 
     setSelectedItems([...updatedSelectedItems, item]);

@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-interface DropdownItem {
-  id: string;
-  name: string;
-  iconClass: string;
-}
+import DropdownItem from '@/types/DropdownItem';
 
 interface MultiSelectDropDownProps {
   items: DropdownItem[];

@@ -1,21 +1,40 @@
 import React from 'react';
+import DropdownItem from '@/types/DropdownItem';
+import axios from 'axios';
 
-interface CreateButton {
+interface CreateButtonProps {
+  tags: DropdownItem[];
   taskTitle: string;
   taskDescription: string;
 }
 
-const CreateButton: React.FC<CreateButton> = ({
+const createTask = async ({
+  tags,
+  taskTitle,
+  taskDescription,
+}: CreateButtonProps) => {
+  try {
+    const response = await axios.post('/api/CreateTask', {
+      taskTitle,
+      taskDescription,
+      tags,
+    });
+  } catch (error) {
+    console.error('Error creating task:', error);
+  }
+};
+
+const CreateButton: React.FC<CreateButtonProps> = ({
+  tags,
   taskTitle,
   taskDescription,
 }) => {
-  function handleClick() {
-    console.log(taskTitle);
-    console.log(taskDescription);
-  }
+  const handleSubmit = () => {
+    createTask({ tags, taskTitle, taskDescription });
+  };
   return (
     <button
-      onClick={handleClick}
+      onClick={handleSubmit}
       className='flex items-center gap-3 rounded-[8px] border border-[#533BE5] bg-[#533BE5] px-3 font-medium text-[#FFFFFF] shadow-1xl'
     >
       <span>Create</span>

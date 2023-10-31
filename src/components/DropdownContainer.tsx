@@ -10,12 +10,7 @@ import {
   project,
   duedate,
 } from '@/DropDownContent/DropdownContent';
-
-interface DropdownItem {
-  id: string;
-  name: string;
-  iconClass: string;
-}
+import DropdownItem from '@/types/DropdownItem';
 
 interface DropdownContainerProps {
   selectedItems: DropdownItem[];

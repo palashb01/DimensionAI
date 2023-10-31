@@ -1,9 +1,6 @@
 import React from 'react';
-interface DropdownItem {
-  id: string;
-  name: string;
-  iconClass: string;
-}
+import DropdownItem from '@/types/DropdownItem';
+
 interface TagsSectionProps {
   selectedItems: DropdownItem[];
   removeItem: (item: DropdownItem) => void;

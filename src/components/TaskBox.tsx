@@ -5,6 +5,7 @@ import TagsSection from '@/components/TagsSection';
 import DropdownContainer from './DropdownContainer';
 import CreateButton from '@/components/Button/CreateButton';
 import dynamic from 'next/dynamic';
+import DropdownItem from '@/types/DropdownItem';
 
 const DynamicEditor = dynamic(
   () => {
@@ -23,12 +24,6 @@ const DynamicToolbar = dynamic(
     ssr: false,
   }
 );
-
-interface DropdownItem {
-  id: string;
-  name: string;
-  iconClass: string;
-}
 
 const TaskBox = () => {
   const [selectedItems, setSelectedItems] = useState<DropdownItem[]>([]);
@@ -76,6 +71,7 @@ const TaskBox = () => {
               <DynamicToolbar />
               <span>
                 <CreateButton
+                  tags={selectedItems}
                   taskTitle={taskTitle}
                   taskDescription={taskDescription}
                 />
