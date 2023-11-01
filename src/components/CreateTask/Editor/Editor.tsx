@@ -40,7 +40,7 @@ const Editor: React.FC<EditorProps> = ({
         className='w-full text-sm text-[#94989E] focus:outline-none'
       />
       <ReactQuill
-        theme='default'
+        theme='snow'
         value={taskDescription}
         onChange={handleChange}
         placeholder={'Describe this task...'}

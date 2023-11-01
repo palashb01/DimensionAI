@@ -40,3 +40,21 @@
     margin: revert !important;
   }
 }
+
+.ql-container.ql-snow{
+  border: unset !important;
+}
+
+.ql-toolbar.ql-snow{
+  border: unset !important;
+  padding: unset;
+}
+
+.ql-snow .ql-formats{
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ql-formats{
+  gap:10px !important;
+}
