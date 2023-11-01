@@ -1,15 +1,16 @@
 'use client';
-import TaskTitle from '@/components/TaskTitle';
+import TaskTitle from '@/components/CreateTask/TaskTitle';
 import React, { useState } from 'react';
-import TagsSection from '@/components/TagsSection';
+import TagsSection from '@/components/CreateTask/TagsSection';
 import DropdownContainer from './DropdownContainer';
-import CreateButton from '@/components/Button/CreateButton';
+import CreateButton from '@/components/CreateTask/Button/CreateButton';
 import dynamic from 'next/dynamic';
 import DropdownItem from '@/types/DropdownItem';
+import AiRecommendation from '@/components/CreateTask/Recommendation/AiRecommendation';
 
 const DynamicEditor = dynamic(
   () => {
-    return import('@/components/Editor/Editor');
+    return import('@/components/CreateTask/Editor/Editor');
   },
   {
     ssr: false,
@@ -18,14 +19,17 @@ const DynamicEditor = dynamic(
 
 const DynamicToolbar = dynamic(
   () => {
-    return import('@/components/Editor/CustomToolbar');
+    return import('@/components/CreateTask/Editor/CustomToolbar');
   },
   {
     ssr: false,
   }
 );
 
-const TaskBox = () => {
+interface TaskBoxProps {
+  setShowCreateTask: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const TaskBox: React.FC<TaskBoxProps> = ({ setShowCreateTask }) => {
   const [selectedItems, setSelectedItems] = useState<DropdownItem[]>([]);
   const [taskTitle, setTaskTitle] = useState<string>('');
   const [taskDescription, setTaskDescription] = useState<string>('');
@@ -40,7 +44,7 @@ const TaskBox = () => {
     <>
       <div className='border-1 flex min-h-[271px] flex-col rounded-[10px] shadow-3xl max-[630px]:w-[350px] sm:w-[500px] md:w-[600px] lg:w-[718px]'>
         <div className='w-full px-[16px] pt-[16px]'>
-          <TaskTitle />
+          <TaskTitle setShowCreateTask={setShowCreateTask} />
           <div className='w-full px-[8px]'>
             <DynamicEditor
               setTaskTitle={setTaskTitle}
@@ -56,6 +60,14 @@ const TaskBox = () => {
               <TagsSection
                 selectedItems={selectedItems}
                 removeItem={removeItem}
+              />
+            </div>
+            <div className='px-[8px]'>
+              <AiRecommendation
+                taskTitle={taskTitle}
+                taskDescription={taskDescription}
+                selectedItems={selectedItems}
+                setSelectedItems={setSelectedItems}
               />
             </div>
             <div>
@@ -74,6 +86,8 @@ const TaskBox = () => {
                   tags={selectedItems}
                   taskTitle={taskTitle}
                   taskDescription={taskDescription}
+                  setTaskTitle={setTaskTitle}
+                  setTaskDescription={setTaskDescription}
                 />
               </span>
             </div>

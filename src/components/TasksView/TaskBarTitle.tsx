@@ -1,4 +1,4 @@
-const TaskTitle = () => {
+const TaskBarTitle = () => {
   return (
     <div className='flex h-fit w-full items-center'>
       <span className='flex items-center gap-2 rounded-sm bg-lightgray px-3 py-2'>
@@ -25,7 +25,7 @@ const TaskTitle = () => {
             </clipPath>
           </defs>
         </svg>
-        <h1 className='text-sm text-[#6C6F75]'>Frontend</h1>
+        <h1 className='text-sm text-[#6C6F75]'>WorkSpace</h1>
       </span>
       <span className='ml-[2px]'>
         <svg
@@ -42,10 +42,10 @@ const TaskTitle = () => {
         </svg>
       </span>
       <span className='ml-[2px]'>
-        <h1 className='text-sm text-[#6C6F75]'>New Task</h1>
+        <h1 className='text-sm text-[#6C6F75]'>Saved Task</h1>
       </span>
     </div>
   );
 };
 
-export default TaskTitle;
+export default TaskBarTitle;

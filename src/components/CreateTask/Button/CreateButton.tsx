@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DropdownItem from '@/types/DropdownItem';
 import axios from 'axios';
+import Lottie from 'lottie-react';
+import loader from '@/lotties/loader.json';
 
 interface CreateButtonProps {
   tags: DropdownItem[];
   taskTitle: string;
   taskDescription: string;
+  setcreatingTask?: React.Dispatch<React.SetStateAction<boolean>>;
+  setTaskTitle?: React.Dispatch<React.SetStateAction<string>>;
+  setTaskDescription?: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedItems?: React.Dispatch<React.SetStateAction<DropdownItem[]>>;
 }
 
 const createTask = async ({
   tags,
   taskTitle,
   taskDescription,
+  setcreatingTask,
+  setTaskTitle,
+  setTaskDescription,
+  setSelectedItems,
 }: CreateButtonProps) => {
   try {
     const response = await axios.post('/api/CreateTask', {
@@ -19,6 +29,12 @@ const createTask = async ({
       taskDescription,
       tags,
     });
+    if (response.status === 200) {
+      setcreatingTask && setcreatingTask(false);
+      setTaskTitle && setTaskTitle('');
+      setTaskDescription && setTaskDescription('');
+      setSelectedItems && setSelectedItems([]);
+    }
   } catch (error) {
     console.error('Error creating task:', error);
   }
@@ -28,16 +44,39 @@ const CreateButton: React.FC<CreateButtonProps> = ({
   tags,
   taskTitle,
   taskDescription,
+  setTaskTitle,
+  setTaskDescription,
+  setSelectedItems,
 }) => {
+  const [creatingTask, setcreatingTask] = useState(false);
   const handleSubmit = () => {
-    createTask({ tags, taskTitle, taskDescription });
+    if (taskTitle !== '' && taskDescription !== '') {
+      setcreatingTask(true);
+      createTask({
+        tags,
+        taskTitle,
+        taskDescription,
+        setcreatingTask,
+        setTaskTitle,
+        setTaskDescription,
+        setSelectedItems,
+      });
+    }
   };
   return (
     <button
       onClick={handleSubmit}
       className='flex items-center gap-3 rounded-[8px] border border-[#533BE5] bg-[#533BE5] px-3 font-medium text-[#FFFFFF] shadow-1xl'
     >
-      <span>Create</span>
+      {creatingTask ? (
+        <Lottie
+          animationData={loader}
+          loop={true}
+          className='h-[30px] w-[30px]'
+        />
+      ) : (
+        <span>Create</span>
+      )}
       <span className='h-[33px] w-[1px] bg-breaker' />
       <span>
         <svg

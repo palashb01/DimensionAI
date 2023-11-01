@@ -1,17 +1,17 @@
 'use client';
 import React from 'react';
 import { Quill } from 'react-quill';
-import { CustomBoldIcon } from '@/components/Editor/CustomIcons/CustomBoldIcon';
-import { CustomItalicIcon } from '@/components/Editor/CustomIcons/CustomItalicIcon';
-import { CustomHeaderIcon } from '@/components/Editor/CustomIcons/CustomHeaderIcon';
-import { CustomOrderedListIcon } from '@/components/Editor/CustomIcons/CustomOrderedListIcon';
-import { CustomBulletListIcon } from '@/components/Editor/CustomIcons/CustomBulletListIcon';
-import { CustomCheckListIcon } from '@/components/Editor/CustomIcons/CustomCheckListIcon';
-import { CustomLinkIcon } from '@/components/Editor/CustomIcons/CustomLinkIcon';
-import { CustomCodeIcon } from '@/components/Editor/CustomIcons/CustomCodeIcon';
-import { CustomAttachIcon } from '@/components/Editor/CustomIcons/CustomAttachIcon';
-import { CustomMentionIcon } from '@/components/Editor/CustomIcons/CustomMentionIcon';
-import { CustomEmojiIcon } from '@/components/Editor/CustomIcons/CustomEmojiIcon';
+import { CustomBoldIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomBoldIcon';
+import { CustomItalicIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomItalicIcon';
+import { CustomHeaderIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomHeaderIcon';
+import { CustomOrderedListIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomOrderedListIcon';
+import { CustomBulletListIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomBulletListIcon';
+import { CustomCheckListIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomCheckListIcon';
+import { CustomLinkIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomLinkIcon';
+import { CustomCodeIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomCodeIcon';
+import { CustomAttachIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomAttachIcon';
+import { CustomMentionIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomMentionIcon';
+import { CustomEmojiIcon } from '@/components/CreateTask/Editor/CustomIcons/CustomEmojiIcon';
 
 function undoChange(this: { quill: any; undo: () => void; redo: () => void }) {
   this.quill.history.undo();
@@ -74,7 +74,7 @@ icons.code = null;
 icons['code-block'] = null;
 // Quill Toolbar component
 export const QuillToolbar = () => (
-  <div id='toolbar' className='flex overflow-scroll'>
+  <div id='toolbar' className='flex overflow-auto'>
     <span className='ql-formats'>
       <CustomAttachIcon />
       <CustomMentionIcon />

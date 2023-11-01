@@ -17,3 +17,26 @@
   width: 100%;
   font-size: 14px;
 }
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#markdown {
+  & ol,
+  & ul,
+  & menu {
+    list-style: revert !important;
+    padding: revert !important;
+    margin: revert !important;
+  }
+}

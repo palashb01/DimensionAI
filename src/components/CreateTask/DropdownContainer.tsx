@@ -1,7 +1,7 @@
 // DropdownContainer.tsx
 import React from 'react';
-import SingleSelectDropdown from '@/components/Dropdown/SingleSelectDropdown';
-import MultiSelectDropdown from '@/components/Dropdown/MultiSelectDropDown';
+import SingleSelectDropdown from '@/components/CreateTask/Dropdown/SingleSelectDropdown';
+import MultiSelectDropdown from '@/components/CreateTask/Dropdown/MultiSelectDropDown';
 import {
   todo,
   priority,
