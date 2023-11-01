@@ -12,9 +12,10 @@ interface CreateButtonProps {
   setTaskTitle?: React.Dispatch<React.SetStateAction<string>>;
   setTaskDescription?: React.Dispatch<React.SetStateAction<string>>;
   setSelectedItems?: React.Dispatch<React.SetStateAction<DropdownItem[]>>;
+  creatingTask?: boolean;
 }
 
-const createTask = async ({
+export const createTask = async ({
   tags,
   taskTitle,
   taskDescription,
@@ -47,11 +48,14 @@ const CreateButton: React.FC<CreateButtonProps> = ({
   setTaskTitle,
   setTaskDescription,
   setSelectedItems,
+  creatingTask,
+  setcreatingTask,
 }) => {
-  const [creatingTask, setcreatingTask] = useState(false);
   const handleSubmit = () => {
     if (taskTitle !== '' && taskDescription !== '') {
-      setcreatingTask(true);
+      if (setcreatingTask) {
+        setcreatingTask(true);
+      }
       createTask({
         tags,
         taskTitle,

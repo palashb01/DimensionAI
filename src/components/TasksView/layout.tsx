@@ -13,7 +13,10 @@ const Layout: React.FC<LayoutProps> = ({ tasks }) => {
   return (
     <div className='flex w-2/5 flex-col gap-16 py-4 max-[800px]:w-2/3'>
       {tasks.map((task) => (
-        <div key={task.id} className='border-1 flex flex-col rounded-[10px] shadow-3xl '>
+        <div
+          key={task.id}
+          className='border-1 flex flex-col rounded-[10px] shadow-3xl '
+        >
           <div className='px-3 py-3'>
             <TaskBarTitle />
             <div className='px-2'>

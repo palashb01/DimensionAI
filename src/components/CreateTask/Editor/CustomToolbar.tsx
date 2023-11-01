@@ -77,9 +77,9 @@ export const QuillToolbar = () => (
   <div id='toolbar' className='flex overflow-auto'>
     <span className='ql-formats'>
       <span className='flex gap-[14px]'>
-      <CustomAttachIcon />
-      <CustomMentionIcon />
-      <CustomEmojiIcon />
+        <CustomAttachIcon />
+        <CustomMentionIcon />
+        <CustomEmojiIcon />
       </span>
       <button className='ql-header' defaultValue='medium'>
         <CustomHeaderIcon />

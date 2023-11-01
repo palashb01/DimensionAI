@@ -7,6 +7,7 @@ import CreateButton from '@/components/CreateTask/Button/CreateButton';
 import dynamic from 'next/dynamic';
 import DropdownItem from '@/types/DropdownItem';
 import AiRecommendation from '@/components/CreateTask/Recommendation/AiRecommendation';
+import { createTask } from '@/components/CreateTask/Button/CreateButton';
 
 const DynamicEditor = dynamic(
   () => {
@@ -33,16 +34,35 @@ const TaskBox: React.FC<TaskBoxProps> = ({ setShowCreateTask }) => {
   const [selectedItems, setSelectedItems] = useState<DropdownItem[]>([]);
   const [taskTitle, setTaskTitle] = useState<string>('');
   const [taskDescription, setTaskDescription] = useState<string>('');
-
+  const [creatingTask, setcreatingTask] = useState(false);
   const removeItem = (item: DropdownItem) => {
     setSelectedItems(
       selectedItems.filter((selected) => selected.name !== item.name)
     );
   };
 
+  function buttonisPressed(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      if (taskTitle !== '' && taskDescription !== '') {
+        createTask({
+          tags: selectedItems,
+          taskTitle,
+          taskDescription,
+          setcreatingTask,
+          setTaskTitle,
+          setTaskDescription,
+          setSelectedItems,
+        });
+      }
+    }
+  }
+
   return (
     <>
-      <div className='border-1 flex min-h-[271px] flex-col rounded-[10px] shadow-3xl max-[630px]:w-[350px] sm:w-[500px] md:w-[600px] lg:w-[718px]'>
+      <div
+        onKeyDown={buttonisPressed}
+        className='border-1 flex min-h-[271px] flex-col rounded-[10px] shadow-3xl max-[630px]:w-[350px] sm:w-[500px] md:w-[600px] lg:w-[718px]'
+      >
         <div className='w-full px-[16px] pt-[16px]'>
           <TaskTitle setShowCreateTask={setShowCreateTask} />
           <div className='w-full px-[8px]'>
@@ -88,6 +108,8 @@ const TaskBox: React.FC<TaskBoxProps> = ({ setShowCreateTask }) => {
                   taskDescription={taskDescription}
                   setTaskTitle={setTaskTitle}
                   setTaskDescription={setTaskDescription}
+                  creatingTask={creatingTask}
+                  setcreatingTask={setcreatingTask}
                 />
               </span>
             </div>
